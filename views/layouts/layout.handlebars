@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/trix.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>{{nombrePagina}}</title>
+</head>
+<body>
+    <div class="nombre-sitio contenedor">
+        <h1>
+            <a href="/">WorkingPeru</a>
+        </h1>
+        {{#if barra}}
+            <div class="buscador">
+                <form action="/buscador" method="POST">
+                    <input type="text" name="q" class="buscar">
+                    <input type="submit" value="Buscar">
+                </form>
+            </div>
+       
+        {{/if}}
+        {{#if cerrrarSession}}
+            <div class="cerrar-sesion">
+                <a href="/panel-administrador">Panel administracion</a>
+                <a href="/cerrar-session">Cerrar session</a>
+                {{#if imagen}}
+                <img src="/uploads/perfil/{{imagen}}" alt="{{imagen}}" class="admin-perfil">
+                {{/if}}
+                <p style="text-align:center;">Hola:<span style="color:white;text-transform:capitalize;text-align:center;">{{nombre}}</span></p>
+            
+            </div>
+        {{/if}}
+    </div>
+
+    <header class="site-header contenedor separador">
+        <h2>{{nombrePagina}}</h2>
+
+        {{#if tagLine}}
+            <P class="tagline">{{tagLine}}</P>
+        {{/if}}
+
+        {{#if boton}}
+            <a href="/vacantes/nueva" class="btn btn-azul">Publicar Nueva Vacante</a>
+        {{/if}}
+    </header>
+
+    <div class="contenido-principal contenedor">
+        {{#if mensajes}}
+            <div class="alertas">
+                {{#mostrarErrores mensajes}}
+                {{/mostrarErrores}}
+            </div>
+            
+        {{/if}}
+        {{{body}}}
+    </div>
+    <script src="/js/trix.js"></script>
+    <script src="/dist/bundle.js"></script>
+</body>
+</html>
