@@ -94,7 +94,7 @@ exports.Crearcuenta = async (req,res,next) =>{
 
     try {
       await usuario.save();
-      res.redirect('/inicia-session');
+      res.redirect('/iniciar-session');
     } catch (error) {
       req.flash('error',error)
       res.redirect("/crear-cuenta");
